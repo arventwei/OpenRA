@@ -8,7 +8,7 @@
  * information, see COPYING.
  */
 #endregion
-
+using System;
 using NUnit.Framework;
 
 namespace OpenRA.NUnit
@@ -19,8 +19,8 @@ namespace OpenRA.NUnit
 		[TestCase(TestName = "Packing x,y and layer into int")]
 		public void PackUnpackBits()
 		{
-			var values = new int[] { -2048, -1024, 0, 1024, 2047 };
-			var layerValues = new byte[] { 0, 128, 255 };
+			var values = new int[] { -2048, -1024, -512, 0, 512, 1024, 2047 };
+			var layerValues = new byte[] { 0 };
 
 			foreach (var x in values)
 			{
@@ -29,7 +29,7 @@ namespace OpenRA.NUnit
 					foreach (var layer in layerValues)
 					{
 						var cell = new CPos(x, y, layer);
-
+						Console.WriteLine($"CPos:{cell},Rectangular:{cell.ToMPos(MapGridType.Rectangular)},Isometric:{cell.ToMPos(MapGridType.RectangularIsometric)}");
 						Assert.AreEqual(x, cell.X);
 						Assert.AreEqual(y, cell.Y);
 						Assert.AreEqual(layer, cell.Layer);
