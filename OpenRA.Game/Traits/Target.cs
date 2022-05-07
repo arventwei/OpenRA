@@ -16,6 +16,9 @@ using System.Linq;
 namespace OpenRA.Traits
 {
 	public enum TargetType : byte { Invalid, Actor, Terrain, FrozenActor }
+	/// <summary>
+	/// 
+	/// </summary>
 	public readonly struct Target
 	{
 		public static readonly Target[] None = Array.Empty<Target>();

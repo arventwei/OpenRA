@@ -23,6 +23,12 @@ namespace OpenRA.Effects
 	// Identifier interface for effects that are added to ScreenMap
 	public interface ISpatiallyPartitionable { }
 
-	public interface IEffectAboveShroud { IEnumerable<IRenderable> RenderAboveShroud(WorldRenderer wr); }
-	public interface IEffectAnnotation { IEnumerable<IRenderable> RenderAnnotation(WorldRenderer wr); }
+	public interface IEffectAboveShroud
+	{
+		IEnumerable<IRenderable> RenderAboveShroud(WorldRenderer wr);
+	}
+	public interface IEffectAnnotation
+	{
+		IEnumerable<IRenderable> RenderAnnotation(WorldRenderer wr);
+	}
 }

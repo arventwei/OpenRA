@@ -45,6 +45,14 @@ namespace OpenRA.Activities
 	 * - Avoid calling actor.CancelActivity(). It is almost always a bug. Call activity.Cancel() instead.
 	 * - Do not evaluate dynamic state (an actor's location, health, conditions, etc.) in the activity's constructor,
 	 *   as that might change before the activity gets to tick for the first time.  Use the OnFirstRun() method instead.
+	 *   
+	 *   编写活动时要注意的事项：
+	 *
+	 * - 在 tick 方法的某处至少使用一次“return true”。
+	 * - 不要“重用”已经开始运行的活动对象（例如，通过将它们作为下一个或孩子排队）。改为排队一个新实例
+	 * - 避免调用 actor.CancelActivity()。它几乎总是一个错误。改为调用 activity.Cancel()。
+	 * - 不要在activity的构造函数中评估动态状态（actor的位置、健康、条件等），
+	 *   因为这可能会在activity第一次tick之前发生变化。请改用 OnFirstRun() 方法。
 	 */
 	public abstract class Activity : IActivityInterface
 	{
